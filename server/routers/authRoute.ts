@@ -6,5 +6,6 @@ const route = express.Router();
 
 route.post("/Regiser", ValidationRegistry, authController.register);
 route.post("/Active", authController.activeAccount);
+route.post("/Login", authController.login);
 
 export default route;

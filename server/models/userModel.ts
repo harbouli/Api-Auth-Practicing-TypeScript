@@ -1,15 +1,7 @@
 import { Schema, model } from "mongoose";
+import { IUSER } from "../config/interface";
 
-interface User {
-  first_name: string;
-  last_name: string;
-  password: string;
-  avatar?: string;
-  account?: string;
-  role: string;
-}
-
-const userSchema = new Schema<User>(
+const userSchema = new Schema(
   {
     first_name: {
       type: String,
@@ -26,7 +18,7 @@ const userSchema = new Schema<User>(
     account: {
       type: String,
       required: true,
-      maxlength: [20, "Your Acount Is Not Valid!"],
+      maxlength: [40, "Your Acount Is Not Valid!"],
       unique: true,
     },
     password: {
@@ -47,4 +39,4 @@ const userSchema = new Schema<User>(
   { timestamps: true }
 );
 
-export default model("User", userSchema);
+export default model<IUSER>("User", userSchema);
